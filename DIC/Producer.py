@@ -13,4 +13,4 @@ class KafkaProducer:
             if self.mongo.is_url_processed(url) == False:
                 self.mongo.add_url_status(url, "enqueued")
                 self.producer.produce(TOPIC, url)
-        self.producer.flush()
+                self.producer.flush()
