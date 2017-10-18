@@ -23,7 +23,7 @@ class MongoDb:
             return False
 
     def add_url_status(self, url, status):
-        collection = self.client[DATABASE_NAME][COLLECTION_GRAPH]
+        collection = self.client[DATABASE_NAME][COLLECTION_VISITED]
         document = collection.find_one({"url": url})
         if document:
             document["status"] = status
