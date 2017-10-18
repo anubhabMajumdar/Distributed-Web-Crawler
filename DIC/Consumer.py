@@ -18,6 +18,7 @@ while running:
         children = readURL.getLinks(url.value())
         print("All children of " + url.value() + " - " + str(children))
         mongo.insert_into_graph(url.value(), children)
+        mongo.add_url_status(url.value(), "processed")
         producer.check_and_insert_urls(children)
 
 c.close()
