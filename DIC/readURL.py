@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 
 def getLinks(url):
 	l = []
+	placeholders = ['#', '?']
 
 	# Reference - https://stackoverflow.com/questions/15138614/how-can-i-read-the-contents-of-an-url-with-python
 	urlOpen = urllib.urlopen(url)
@@ -15,7 +16,9 @@ def getLinks(url):
 
 	for a in links:
 		if a['href'].startswith('/wiki/'):
-			l.append("http://en.wikipedia.org"+a['href'])
+			x = a['href'].split(placeholders[0])	# Remove placeholders
+			x = x[0].split(placeholders[1])			# Remove placeholders
+			l.append("http://en.wikipedia.org"+x[0])
 	return l
 
 # url = "https://en.wikipedia.org/wiki/Barack_Obama"
