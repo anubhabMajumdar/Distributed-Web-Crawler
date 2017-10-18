@@ -16,7 +16,7 @@ while running:
     if not url.error():
         print("Fetched Url from Kafka - " + url.value())
         children = readURL.getLinks(url.value())
-        print("All children of " + url.value() + " - " + children)
+        print("All children of " + url.value() + " - " + str(children))
         mongo.insert_into_graph(url.value(), children)
         producer.check_and_insert_urls(children)
 
