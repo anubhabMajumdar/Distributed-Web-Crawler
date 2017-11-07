@@ -10,7 +10,9 @@ class KafkaProducer:
 
     def check_and_insert_urls(self, urls):
         for url in urls:
-            if self.mongo.is_url_processed(url) == False:
+            #print("Checking if url is already processed...")
+            if not self.mongo.is_url_processed(url):
+                #print("Url not processed... Now adding status")
                 self.mongo.add_url_status(url, "enqueued")
-                self.producer.produce(TOPIC, url)
-                self.producer.flush()
+                #print("Status added...Now producing")
+                self.producer.produce(URL_TOPIC, url)
