@@ -11,7 +11,7 @@ api = Api(app)
 @app.route("/", methods=['GET'])
 def hello():
 	d = {}
-	f = open('configFile.py', 'r')
+	f = open('config.cfg', 'r')
 	for line in f.readlines():
 		if line.startswith('#') or '=' not in line:
 			continue
