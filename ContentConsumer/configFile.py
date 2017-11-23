@@ -1,6 +1,6 @@
 import urllib, json
 
-url = 'http://127.0.0.1:5000/'
+url = 'http://18.221.44.189:5000/'
 response = urllib.urlopen(url)
 data = json.loads(response.read())
 
