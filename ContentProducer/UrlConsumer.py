@@ -3,6 +3,7 @@ from configFile import *
 from ContentProducer import KafkaContentProducer
 from URLReader import UrlReader
 from Mongodb import MongoDb
+import time
 
 kafka_content_producer = KafkaContentProducer()
 url_reader = UrlReader()
@@ -20,4 +21,7 @@ while running:
         content = url_reader.get_content(url.value())
         mongodb.add_url_status(url.value(), "fetched")
         kafka_content_producer.insert_content(url.value(), content)
+        sec = 35
+        print("Sleeping for " + str(35) + "seconds")
+        time.sleep(sec)
 c.close()

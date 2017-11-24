@@ -1,8 +1,15 @@
 import urllib, json
+import sys
 
-url = 'http://18.221.44.189:5000/'
+if sys.argv.__len__() < 2:
+    print ("Please provide configuration server")
+    sys.exit(0)
+
+url = 'http://' + sys.argv[1] + ':5000/'
+print("Making Request for configuration to url - " + url)
 response = urllib.urlopen(url)
 data = json.loads(response.read())
+print("Got configuration response - " + str(data))
 
 # KAFKA
 BOOTSTRAP_SERVERS = data['BOOTSTRAP_SERVERS']
@@ -14,7 +21,7 @@ URL_TOPIC = data['URL_TOPIC']
 # MONGODB
 DATABASE_NAME = data['DATABASE_NAME']
 DATABASE_IP = data['DATABASE_IP']
-DATABASE_PORT = data['DATABASE_PORT']
+DATABASE_PORT = int(data['DATABASE_PORT'])
 COLLECTION_GRAPH = data['COLLECTION_GRAPH']
 COLLECTION_VISITED = data['COLLECTION_VISITED']
 

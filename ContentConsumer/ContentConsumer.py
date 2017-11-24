@@ -1,3 +1,4 @@
+print ("Program Started")
 from confluent_kafka import Consumer
 from configFile import *
 from FinalProducer import KafkaProducer
