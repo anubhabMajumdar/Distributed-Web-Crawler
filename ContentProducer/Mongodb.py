@@ -22,6 +22,14 @@ class MongoDb:
         else:
             return False
 
+    def is_already_in_wikigraph(self, url):
+        collection = self.client[DATABASE_NAME][COLLECTION_GRAPH]
+        document = collection.find_one({"parent_url": url})
+        if document:
+            return True
+        else:
+            return False
+
     def add_url_status(self, url, status):
         collection = self.client[DATABASE_NAME][COLLECTION_VISITED]
         document = collection.find_one({"url": url})

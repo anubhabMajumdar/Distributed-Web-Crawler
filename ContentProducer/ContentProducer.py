@@ -5,10 +5,10 @@ from Mongodb import MongoDb
 
 class KafkaContentProducer:
     def __init__(self):
-        self.producer = Producer({'bootstrap.servers': BOOTSTRAP_SERVERS, 'message.max.bytes' :  100000000})
+        self.producer = Producer({'bootstrap.servers': BOOTSTRAP_SERVERS})
         self.mongo = MongoDb()
 
-    def insert_content(self, url, content):
-        self.mongo.add_url_status(url, "fetched")
-        self.producer.produce(CONTENT_TOPIC, key=url, value=content)
+    def insert_all_urls(self, urls):
+        for url in urls:
+            self.producer.produce(UNPROCESSED_URL_TOPIC, value=url)
         self.producer.flush()

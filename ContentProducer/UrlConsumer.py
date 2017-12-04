@@ -5,7 +5,7 @@ from URLReader import UrlReader
 from Mongodb import MongoDb
 import time
 
-kafka_content_producer = KafkaContentProducer()
+kafka_url_producer = KafkaContentProducer()
 url_reader = UrlReader()
 mongodb = MongoDb()
 
@@ -18,10 +18,18 @@ while running:
     url = c.poll()
     if not url.error():
         print("Fetched Url from Kafka - " + url.value())
-        content = url_reader.get_content(url.value())
-        mongodb.add_url_status(url.value(), "fetched")
-        kafka_content_producer.insert_content(url.value(), content)
-        sec = 35
-        print("Sleeping for " + str(35) + "seconds")
-        time.sleep(sec)
+        print("Checking if already processed...")
+        if mongodb.is_already_in_wikigraph(url.value()):
+            print("Url was already processed")
+            mongodb.add_url_status(url.value(), "processed")
+        else:
+            mongodb.add_url_status(url.value(), "processed")
+            content = url_reader.get_content(url.value())
+            urls = url_reader.parse_content(content)
+            print("Found number of children urls - " + str(len(urls)))
+            mongodb.insert_into_graph(url.value(), urls)
+            kafka_url_producer.insert_all_urls(urls)
+            sec = 25
+            print("Sleeping for " + str(sec) + "seconds")
+            time.sleep(sec)
 c.close()

@@ -11,4 +11,4 @@ RUN pip install --no-cache-dir --user -r requirements.txt
 
 COPY . .
 ENTRYPOINT ["python", "UrlConsumer.py"]
-CMD [ "python", "./UrlConsumer.py" ]
+CMD [ "python", "./UrlConsumer.py"]
