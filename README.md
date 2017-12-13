@@ -1,9 +1,6 @@
 # Abstract
 
-Internet is composed of web-pages connected through hyperlinks. This gives it a hu-
-mongous and sparsely connected graphical structure - with about 1.3 billion unique do-
-mains [1](http://www.internetlivestats.com/total-number-of-websites/#curious) represented as nodes. One fundamental problem is to decipher this graphical structure by exploring all hyperlinks of all web-pages and storing it in a suitable data structure. However, because of the scale of the internet, this is no longer a trivial task, but a “Big Data” problem because data becomes the bottleneck. In this prject, we implemented a distributed web crawler capable of tackling the volume of data by scaling across multiple nodes. Besides scalability, the web crawler is also efficient and fault tolerant, and in our
-experiments have shown high performance even with limited resources. Furthermore, we show that the data collected by the web crawler is an accurate representation of a subset of internet and can be used for indexing the web-pages using algorithms like pagerank.
+Internet is composed of web-pages connected through hyperlinks. This gives it a humongous and sparsely connected graphical structure - with about 1.3 billion unique domains [1](http://www.internetlivestats.com/total-number-of-websites/#curious) represented as nodes. One fundamental problem is to decipher this graphical structure by exploring all hyperlinks of all web-pages and storing it in a suitable data structure. However, because of the scale of the internet, this is no longer a trivial task, but a “Big Data” problem because data becomes the bottleneck. In this project, we implemented a distributed web crawler capable of tackling the volume of data by scaling across multiple nodes. Besides scalability, the web crawler is also efficient and fault tolerant, and in our experiments have shown high performance even with limited resources. Furthermore, we show that the data collected by the web crawler is an accurate representation of a subset of internet and can be used for indexing the web-pages using algorithms like pagerank.
 
 # Features
 * Highly scalable
