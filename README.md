@@ -49,5 +49,5 @@ db.WikiGraph.mapReduce(mapFunction, reduceFunction, { out : "total"});
 db.total.find().sort({value:-1}).limit(5).pretty()
 ```
 # Read more about our project
-* [Presentation](https://docs.google.com/presentation/d/11xJGloeuTd8Q0f_yiLlnOZLgsi8kChl0_I2fWaJETfA/edit?usp=sharing){:target="_blank"}
-* [Paper](https://drive.google.com/file/d/1PNAtPh9JGf7-zx6H2-nNzlSrGAmqOwBy/view?usp=sharing){:target="_blank"}
+* [Presentation](https://docs.google.com/presentation/d/11xJGloeuTd8Q0f_yiLlnOZLgsi8kChl0_I2fWaJETfA/edit?usp=sharing)
+* [Paper](https://drive.google.com/file/d/1PNAtPh9JGf7-zx6H2-nNzlSrGAmqOwBy/view?usp=sharing)
